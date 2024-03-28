@@ -1,0 +1,24 @@
+{% extends "base.html"%}
+{%block main_content%}
+
+<div class="forum-post" style=" background-color: #6b5b95">
+    <h2>Forum Post Title</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non magna nulla. Vivamus finibus sapien ac enim laoreet, vitae feugiat magna dapibus. Integer et nulla sit amet elit ultrices semper.</p>
+    <p class="author">Posted by John Doe</p>
+    <p class="date">Posted on January 1, 2022</p>
+    
+    <!-- Comments section -->
+    <div>
+        <div class="comment">
+            <p class="author">Comment by Jane Doe</p>
+            <p class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div>
+            <p class="author">Comment by Alice Smith</p>
+            <p class="content">Nulla facilisi. Integer id ipsum vitae felis vehicula consequat.</p>
+        </div>
+        <!-- Add more comments here -->
+    </div>
+</div>
+
+{% endblock %}

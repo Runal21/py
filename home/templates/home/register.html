@@ -1,0 +1,29 @@
+{% extends "base.html"%}
+{%block main_content%}
+    <div class="container">
+        <h1>Register page</h1>
+        <form method="POST" action="{%url 'register'%}">
+            {%csrf_token%}
+            <div class="mb-3">
+                <label  class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="username"name="username">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">FirstName</label>
+                <input type="text" class="form-control" placeholder="firstname"  name="first_name">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">LastName</label>
+                <input type="text" class="form-control"  placeholder="lastname" name="last_name">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" placeholder="email"name="email">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Password</label>
+                <input type="password" class="form-control" placeholder="password"name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button><a href="{%url 'login' %}">Alredy have an account!!</a>
+        </form>
+{%endblock main_content%}

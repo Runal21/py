@@ -1,0 +1,11 @@
+{% extends "base.html"%}
+{%block main_content%}
+
+    <main>
+        <p>im article page</p>
+        {% csrf_token %}
+        <a href="{%url 'create_article'%}" class=btn btn-primary role="button">Create Article</a><br/><br/>
+        <a href="{% url 'update_article' %}" class=btn btn-primary role=button >Update Article</a>
+    </main>
+
+{% endblock %}

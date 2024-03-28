@@ -1,0 +1,9 @@
+{% extends "base.html"%}
+{%block main_content%}
+<form method="POST" enctype="multipart/form-data">  <!-- Add enctype attribute -->
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="file" name="image">  <!-- Add input for image upload -->
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
