@@ -5,10 +5,6 @@ from  django.utils import timezone
 class Article(models.Model):
     art_title = models.CharField(max_length=100)
     art_content = models.TextField()
-    art_image = models.ImageField(upload_to='article_images/',null=True, blank=True)
+    art_image = models.ImageField(upload_to='static/article_images',null=True, blank=True)
     art_author = models.CharField(max_length=20)
     art_created_at = models.DateTimeField(default=timezone.now)
-    art_updated_at = models.DateTimeField(default=timezone.now)
-
-    def __str__(self):
-        return self.title

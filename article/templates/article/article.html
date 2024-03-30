@@ -2,10 +2,19 @@
 {%block main_content%}
 
     <main>
-        <p>im article page</p>
-        {% csrf_token %}
-        <a href="{%url 'create_article'%}" class=btn btn-primary role="button">Create Article</a><br/><br/>
-        <a href="{% url 'update_article' %}" class=btn btn-primary role=button >Update Article</a>
+        <h1>Articles</h1>
+        <ul>
+            {% for article in articles %}
+                <li>
+                    <h2>{{ article.art_title }}</h2>
+                    <p>By <B>{{ article.art_author }}</b></p>
+                    <img src="{{ article.art_image }}" alt="image not found">
+                    <p>{{ article.art_content }}</p>
+                </li>
+            {% endfor %}
+        </ul>
     </main>
-
+    {%if  user.is_staff %}
+      <a href="{%url 'create_article' %}">Create Article</a><br/><br/>
+    {%endif%}
 {% endblock %}

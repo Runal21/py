@@ -1,9 +1,29 @@
 {% extends "base.html"%}
 {%block main_content%}
-<form method="POST" enctype="multipart/form-data">  <!-- Add enctype attribute -->
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="file" name="image">  <!-- Add input for image upload -->
-    <button type="submit">Submit</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Article</title>
+</head>
+<body>
+    {%if  user.is_staff %}
+    <form method="POST" action="{%url 'create_article'%}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title" >Title of Article:</label><br>
+        <input type="text" id="art_title" name="art_title"><br>
+
+        <label for="author" >Author of Article:</label><br>
+        <input type="text" id="art_author" name="art_author"><br>
+
+        <label for="image" >Images of Article:</label><br>
+        <input type="file" id="art_image" name="art_image"><br>
+
+        <label for="content">Content of Article:</label><br>
+        <textarea id="art_content" name="art_content" rows="4" cols="50"></textarea><br>
+
+        <input type="submit" value="Submit">
+    </form>
+    {%endif%}
 {% endblock %}

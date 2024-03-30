@@ -11,7 +11,6 @@
   background-color:lightgreen;">
       <a href="{% url 'home' %}">Home</a>
       <a href="{% url 'about' %}">About</a>
-      <a href="{% url 'contact' %}">Contact</a>
       <a href="{% url 'forumpost' %}">Forumpost</a>
       <a href="{% url 'article' %}">Articles</a>
       <a href="{% url 'DESagent' %}">DES Agent</a>
@@ -30,6 +29,10 @@
   </main>
   <footer>
     <p>&copy; 2023 DES Solutions All rights reserved.</p>
+    <div style="float: right; textarea: 5px; text-align=right;">
+      <a href="{% url 'contact' %}">Contact</a>
+      <a href="{% url 'feedback' %}">Feedback</a>
+    </div>
   </footer>
 </body>
 </html>

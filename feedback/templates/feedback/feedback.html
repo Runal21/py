@@ -1,23 +1,47 @@
 {% extends "base.html"%}
 {%block main_content%}
+{% load static%}
    
 <div class="container"style='width: 100%;padding-right: 15px;padding-left: 15px;margin right: auto;margin left: auto;'></div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> 
+<link rel="stylesheet" href="/static/feedback/feedback.css"> 
+</head>
 </style>
     <h1>Feedback Form</h1>
-    <form action="submit_feedback.php" method="post">
-        <label for="name">Usernames:</label>
-        <input type="text" id="name" name="name" required>
-        <br>
-        <label for="email">Your Email:</label>
-        <input type="text" id="email" name="email" required>
-        <br>
-        <label for="message">Feedback:</label>
-        <textarea id="message" name="message" required></textarea>
-        <br>
-        <input type="submit" value="Submit Feedback">
-    </form>
-</div>
-<script>
+    <form method="POST" action="{%url 'feedback'%}">
+        {%csrf_token%}
+<body class="form-fb">
+	<div class="form-box"> 
+		<div class="textup"> 
+			<i class="fa fa-solid fa-clock"></i> 
+			It only takes two minutes!! 
+		</div> 
+		<form> 
+			<label for="fb_uname"> 
+				<i class="fa fa-solid fa-user"></i> 
+				username 
+			</label> 
+			<input type="text" id="fb_uname"
+				name="fb_uname" required> 
 
-</script>
+            <label for="fb_type"> 
+                    <i class="fa-solid fa-comments"
+                    style="margin-right: 3px;"></i> 
+                   Type of Feedback
+            </label> 
+            <textarea id="fb_type" name="fb_type" required> 
+            </textarea> 
+
+			<label for="fb_content"> 
+				<i class="fa-solid fa-comments"
+				style="margin-right: 3px;"></i> 
+				Write your Suggestions: 
+			</label> 
+			<textarea id="fb_content" name="fb_content"
+					rows="4" cols="10" required> 
+			</textarea> 
+			<button type="submit"> 
+				Submit 
+			</button> 
+		</form> 
 {%endblock%}

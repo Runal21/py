@@ -22,6 +22,7 @@ from feedback.views import *
 from article.views import *
 from DESagent.views  import *
 
+
 urlpatterns = [
     path('',home,name='home'), #Home page
     path('register/',registerpage,name='register'),
@@ -31,12 +32,11 @@ urlpatterns = [
     path('contact',contact,name="contact"),#Contact us page
 
 
-    path('feedback/',feedback,name="feedback"),#Feed
+    path('feedback/',feedback_send,name="feedback"),#Feed
 
 
     path('article/',article, name= 'article'),#Article Page
     path('createarticle/',admin_create_article,name='create_article'),
-    path('updatearticle/',admin_update_article,name='update_article'),
 
     path('forumpost/',forumpost, name='forumpost'),#Discussion Forum
 
@@ -48,3 +48,4 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),  
 ]
+
