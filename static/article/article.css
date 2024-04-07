@@ -4,23 +4,34 @@
     margin-bottom: 20px;
 }
 
-.article-content h1 {
+.art_h1{
+    color: rgb(2, 104, 2); 
+    text-decoration-color:rgb(3, 150, 3) ;
     font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.art_h2{
+    text-decoration-color:rgb(3, 150, 3) ;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
 .article-content .article-meta {
     font-style: italic;
-    color: #888;
+    color: #d51616;
     margin-bottom: 10px;
 }
 
 .article-content img {
     max-width: 100%;
     height: auto;
+    align-items: center;
     margin-bottom: 10px;
 }
 
-.article-content p {
+.article-content .art_text {
     margin-bottom: 15px;
+    text-decoration-style: wavy;
+    color:black;
 }

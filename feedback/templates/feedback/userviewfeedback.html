@@ -1,0 +1,35 @@
+{% extends "base.html"%}
+{%block main_content%}
+{% load static%}
+<style>
+
+.list-group{
+    color:black;
+    font-weight: 700;
+    margin-bottom: 16px;
+    list-style-type:none;
+}
+.userviewfbtitle{
+    color:black;
+    text-align: center;
+}
+</style>
+<body class="wholeit">
+<h1 class="userviewfbtitle">Admin Feedback Replies</h1>
+<ul  class="list-group">
+    {% for reply in replies %}
+        <li>
+            <p><strong>Feedback:</strong> {{ reply.feedback.fb_content }}</p>
+            <p><strong>Feedback_obj:</strong> {{ reply.feedback }}</p>
+            <p><strong>admin:</strong> {{ reply.admin }}
+            <p><strong>user:</strong> {{ reply.feedback.fb_uname }}
+            <p><strong>Reply:</strong> {{ reply.reply_content }}</p>
+            <p><strong>Timestamp:</strong> {{ reply.timestamp }}</p>
+            <hr>
+        </li>
+    {% empty %}
+        <li>No feedback replies found.</li>
+    {% endfor %}
+</ul>
+</body>
+{%endblock%}

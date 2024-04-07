@@ -1,21 +1,30 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Feedback
+from django.contrib.auth.decorators import login_required
 from feedback.views import *
+from django.contrib  import messages
+from .models import Feedback, FeedbackReply, User
 
+
+@login_required(login_url='/login/')
 # Create your views here.
-def feedback_send(request):
+def feedback_submit(request):
     if request.method =="POST":
-        fb_uname=request.POST.get('fb_uname')
-        fb_type = request.POST.get('fb_type')
         fb_content = request.POST.get('fb_content')
-        
-        fb_name =Feedback.objects.filter(fb_uname=fb_uname)
-        if fb_name not in Feedback:
-            return HttpResponse("Cannot make any feddback")
-    
-        fb_submit = Feedback.objects.create(fb_uname=fb_uname ,fb_type=fb_type ,fb_content=fb_content)
-        fb_submit.save()
-    return render(request,'feedback/feedback.html')
+ # Get the logged-in user
+        fb_uname = request.user
+        feedback = Feedback.objects.create(fb_uname=fb_uname, fb_content=fb_content)
+        feedback.save()
+        messages.success(request, 'Feedback submitted successfully!')
+        return redirect('home')  # Redirect to the home page after submitting feedback
+    else:
+        return render(request,'feedback/feedback_submit.html')
 
-    
+def admin_reply(request):
+    replies = FeedbackReply.objects.all()
+    return render(request, "feedback/userviewfeedback.html", {'replies': replies})
+
+def user_feedback(request):
+    user = request.user
+    feedbacks = Feedback.objects.filter(fb_uname=user)
+    return render(request, 'feedback/feedback_reply_form.html', {'feedbacks': feedbacks})

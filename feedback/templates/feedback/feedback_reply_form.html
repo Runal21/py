@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+<h1> User Feedback Replies</h1>
+<ul>
+  {% for feedback in feedbacks %}
+    <li>
+      <p><strong>Feedback:</strong> {{ feedback.fb_content }}</p>
+      <p><strong>Feedback_obj:</strong> {{ feedback }}</p>
+      <p><strong>user:</strong> {{ feedback.fb_uname }}</p>
+    </li>
+  {% empty %}
+    <li>No feedback replies found.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
+
+{% comment %} 
+<p><strong>Feedback:</strong> {{ feedback.fb_content }}</p>
+<p><strong>Feedback_obj:</strong> {{ feedback.fb_uname }}</p>
+<p><strong>Timestamp:</strong> {{feedback.fb_timestamp }}</p> {% endcomment %}

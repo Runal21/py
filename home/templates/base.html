@@ -1,28 +1,37 @@
+{%load static%}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>DES Solutions</title>
+  <link rel="icon" type="image/x-icon" href="/static/home/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="{% static 'home/homebase.css' %}" />
 </head>
-<body>
-  <navbar class='navbar' style="    text-color: white;
-  text-align:left;
-  background-color:lightgreen;">
-      <a href="{% url 'home' %}">Home</a>
-      <a href="{% url 'about' %}">About</a>
-      <a href="{% url 'forumpost' %}">Forumpost</a>
-      <a href="{% url 'article' %}">Articles</a>
-      <a href="{% url 'DESagent' %}">DES Agent</a>
-  </navbar>
-  <navbar class='user_used' style ="float: right; text-color: white;text-align:right; background-color: lightgreen;">
-    <a href="{% url 'login' %}">login</a>
-    <a href="{% url 'register'%}">register</a>
-    Welcome {{ user }} |<a href = "{% url 'logout' %}" >Log out</a>
-  </navbar>
-  <header>
-    <h1>DES Solutions</h1>
-  </header>
+<div class="container">
+  <img id="dessoln"
+      src="{% static '\home\titleimg.jpg' %}">
+      <p class ="title">DES Soln | Dev Enviro Smart Solutions</p>
+</div>
+
+<div class="navbar">
+  <a href="{% url 'home' %}">Home</a><span>&nbsp;</span>
+  <a href="{% url 'about' %}">About</a><span>&nbsp;</span>
+  <a href="{% url 'forumpost' %}">Forumpost</a><span>&nbsp;</span>
+  <a href="{% url 'article' %}">Articles</a><span>&nbsp;</span>
+  <a href="{% url 'DESagent' %}">DES Agent</a><span>&nbsp;</span>
+  <div class="navbar-right">
+  {% if user.is_authenticated %}
+  Welcome {{ user }} |<a href = "{% url 'logout' %}" >Log out</a>
+  {% else %}
+  <a href="{% url 'login' %}">Login</a><span>&nbsp;</span>
+  <a href="{% url 'register'%}">Register</a><span>&nbsp;</span>
+  {% endif %}
+  </div>
+</div>  
+<!-- Main Content -->
+  <body>
   <main>
     {% block main_content %}
     {% endblock %}
@@ -30,8 +39,13 @@
   <footer>
     <p>&copy; 2023 DES Solutions All rights reserved.</p>
     <div style="float: right; textarea: 5px; text-align=right;">
-      <a href="{% url 'contact' %}">Contact</a>
-      <a href="{% url 'feedback' %}">Feedback</a>
+      <a href="{% url 'contact' %}">Contact</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    
+      <a href="{% url 'feedback_submit' %}">Feedback</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href= "{%url 'admin_reply'%}">Admin Feedback Replies</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+   
+      <a href="{% url 'user_feedback'%}">Reply to Feedback</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+   
     </div>
   </footer>
 </body>

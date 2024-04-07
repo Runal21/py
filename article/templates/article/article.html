@@ -7,7 +7,7 @@
 
 <body>
     <main>
-        <h1>Articles</h1>
+        <h1 class="art_h1">Articles</h1>
         <div class="article-content">
         <ul>
             {% for article in articles %}
@@ -16,8 +16,8 @@
                     <h2>{{ article.art_title }}</h2>
                     <aside>
                     <p class="article-meta">published_date : {{ article.art_created_at|date:"d/m/Y" }}  | By <B>{{ article.art_author }}</b></p>
-                    <img src="{% static 'article_images\215208-untitled-design-2022-04-11t182506560.jpg' %}" alt="image not found" width="350px" height="400px">
-                    <p>{{ article.art_content }}</p>
+                    <img src="{{article.art_image.url}}" alt="article image"width='350px' height='150px'>
+                    <p class:"art_text">{{ article.art_content }}</p>
                     </aside>
                     </article>
                 </li>

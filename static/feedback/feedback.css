@@ -9,13 +9,13 @@
 	justify-content: space-around; 
 	flex-direction: column; 
 	height: 100vh; 
-	background-color: #bde5d2; 
+	background-color: #1bda7e; 
+	color: rgb(11, 118, 11); 
 	font-family: 'Poppins', sans-serif; 
 }
 
 .textup { 
 	text-align: center; 
-	color: rgb(11, 118, 11); 
 	font-weight: 700; 
 } 
 

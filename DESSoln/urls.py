@@ -21,6 +21,8 @@ from forumpost.views import *
 from feedback.views import *
 from article.views import *
 from DESagent.views  import *
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
@@ -32,8 +34,10 @@ urlpatterns = [
     path('contact',contact,name="contact"),#Contact us page
 
 
-    path('feedback/',feedback_send,name="feedback"),#Feed
-
+    path('feedbacksubmit/',feedback_submit,name="feedback_submit"),#Feed
+    path('admin_reply/', admin_reply, name='admin_reply'),
+     path('user_feedback/', user_feedback, name='user_feedback'),
+    
 
     path('article/',article, name= 'article'),#Article Page
     path('createarticle/',admin_create_article,name='create_article'),
@@ -46,6 +50,6 @@ urlpatterns = [
 
 
 
-    path('admin/', admin.site.urls),  
-]
+    path('admin/', admin.site.urls) 
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
